@@ -5,13 +5,6 @@ node_modules
 package-lock.json
 yarn.lock
 
-# Fortnite Shop images
-assets/img/fortnite/shop/**/*.png
-!assets/img/fortnite/shop/**/example-shop.png
-
-# DB
-giveaways.json
-
 # Mac OS files
 .DS_Store
 
@@ -20,4 +13,4 @@ report*.json
 !languages/**/general/report.json
 
 # IDE
-.vscode
+workspace.code-workspace
