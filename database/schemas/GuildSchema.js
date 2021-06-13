@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const PrivateConfig = require("../../PublicConfig.json")
-mongoose.set('debug', true)
+const PublicConfig = require("../../PublicConfig.json")
+if (PublicConfig.enable_debug === true) mongoose.set('debug', true)
 
 const GuildSchema = mongoose.Schema({
     _id: { // GUILD ID
@@ -8,7 +8,7 @@ const GuildSchema = mongoose.Schema({
     },
     prefix: {
         type: String,
-        default: PrivateConfig.prefix
+        default: PublicConfig.prefix
     },
     invalid_time: {
         type: Number,

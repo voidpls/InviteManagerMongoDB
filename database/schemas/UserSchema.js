@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const PublicConfig = require("../../PublicConfig.json")
+if (PublicConfig.enable_debug === true) mongoose.set('debug', true)
 
 const UserSchema = mongoose.Schema({
     _id: String, // USER
