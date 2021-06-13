@@ -53,3 +53,7 @@ A real wiki will accompany the project to facilitate its deployment.
 - [x] mongoDB basics functions
 - [x] Guild schema
 - [x] User schema
+
+## Credits
+
+- Guideline : [TheShadowGamer/Invite-Manager](https://github.com/TheShadowGamer/Invite-Manager)
