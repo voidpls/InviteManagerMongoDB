@@ -39,3 +39,17 @@ A real wiki will accompany the project to facilitate its deployment.
 ### Utils commands
 - [ ] ping
 - [ ] help
+
+### Events
+- [x] guildMemberAdd
+- [x] guildMemberRemove
+- [x] inviteCreate
+- [x] inviteDelete
+- [x] message
+- [x] missingPermissions
+- [x] ready
+
+### MongoDB
+- [x] mongoDB basics functions
+- [x] Guild schema
+- [x] User schema
