@@ -10,7 +10,10 @@ const GuildSchema = mongoose.Schema({
         type: String,
         default: PrivateConfig.prefix
     },
-    invalid_time: 86400000, // Time in ms to know if the account is too recent
+    invalid_time: {
+        type: Number,
+        default: 86400000 // Time in ms to know if the account is too recent
+    },
     join: {
         type: Object,
         default: {

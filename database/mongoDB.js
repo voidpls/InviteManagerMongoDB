@@ -71,3 +71,11 @@ module.exports.getUserDB = async function (userID, guildID, inviterID = null) { 
     }
   }
 }
+
+module.exports.getLeaderboard = async function (guildID) {
+  return await UsersDB.find({
+    guildID: guildID
+  }).sort({
+    invites: -1
+  }).limit(10)
+}
