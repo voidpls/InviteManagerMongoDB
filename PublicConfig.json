@@ -1,4 +1,21 @@
 {
-    "prefix" : "!",
-    "enable_debug" : true
+    "prefix": "!",
+    "enable_debug": true,
+    "default": {
+        "join": {
+            "enabled": false,
+            "messageCorrect": "{member:mention} vient de rejoindre. Il a été invité par **{inviter:username}** qui a désormais **{invites} invitations** !",
+            "messageUnknown": "{member:mention} vient de rejoindre. Impossible de savoir par qui il a été invité !",
+            "messageBot": "{member:mention} vient de rejoindre via l'OAuth flow !",
+            "messageVanity": "{member:mention} vient de rejoindre via le lien officiel ! (**{code}**)"
+        },
+        "leave": {
+            "enabled": false,
+            "messageCorrect": "{member:mention} est parti. Il a été invité par **{inviter:username}** qui a désormais **{invites} invitations** !",
+            "messageUnknown": "{member:mention} est parti. Impossible de savoir par qui il a été invité !",
+            "messageBot": "{member:mention} est parti. Il a été invité via l'OAuth flow !",
+            "messageVanity": "{member:mention} est parti. Il a été invité via le lien officiel !"
+        }
+
+    }
 }

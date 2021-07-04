@@ -17,23 +17,23 @@ const GuildSchema = mongoose.Schema({
     join: {
         type: Object,
         default: {
-            enabled: false,
+            enabled: PublicConfig.default.join.enabled,
             channel: null,
-            messageCorrect: "{member:mention} vient de rejoindre. Il a été invité par **{inviter:username}** qui a désormais **{invites} invitations** !",
-            messageUnknown: "{member:mention} vient de rejoindre. Impossible de savoir par qui il a été invité !",
-            messageBot: "{member:mention} vient de rejoindre via l'OAuth flow !",
-            messageVanity: "{member:mention} vient de rejoindre via le lien officiel ! (**{code}**)"
+            messageCorrect: PublicConfig.default.join.messageCorrect,
+            messageUnknown: PublicConfig.default.join.messageUnknown,
+            messageBot: PublicConfig.default.join.messageBot,
+            messageVanity: PublicConfig.default.join.messageVanity
         }
     },
     leave: {
         type: Object,
         default: {
-            enabled: false,
+            enabled: PublicConfig.default.leave.enabled,
             channel: null,
-            messageCorrect: "{member:mention} est parti. Il a été invité par **{inviter:username}** qui a désormais **{invites} invitations** !",
-            messageUnknown: "{member:mention} est parti. Impossible de savoir par qui il a été invité !",
-            messageBot: "{member:mention} est parti. Il a été invité via l'OAuth flow !",
-            messageVanity: "{member:mention} est parti. Il a été invité via le lien officiel !"
+            messageCorrect: PublicConfig.default.leave.messageCorrect,
+            messageUnknown: PublicConfig.default.leave.messageUnknown,
+            messageBot: PublicConfig.default.leave.messageBot,
+            messageVanity: PublicConfig.default.leave.messageVanity
         }
 
     }
