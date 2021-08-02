@@ -10,9 +10,9 @@ const GuildSchema = mongoose.Schema({
         type: String,
         default: PublicConfig.prefix
     },
-    invalid_time: {
+    fake: {
         type: Number,
-        default: 86400000 // Time in ms to know if the account is too recent
+        default: PublicConfig.default.fake
     },
     join: {
         type: Object,
@@ -22,7 +22,8 @@ const GuildSchema = mongoose.Schema({
             messageCorrect: PublicConfig.default.join.messageCorrect,
             messageUnknown: PublicConfig.default.join.messageUnknown,
             messageBot: PublicConfig.default.join.messageBot,
-            messageVanity: PublicConfig.default.join.messageVanity
+            messageVanity: PublicConfig.default.join.messageVanity,
+            messageFake: PublicConfig.default.join.messageFake
         }
     },
     leave: {
@@ -33,7 +34,8 @@ const GuildSchema = mongoose.Schema({
             messageCorrect: PublicConfig.default.leave.messageCorrect,
             messageUnknown: PublicConfig.default.leave.messageUnknown,
             messageBot: PublicConfig.default.leave.messageBot,
-            messageVanity: PublicConfig.default.leave.messageVanity
+            messageVanity: PublicConfig.default.leave.messageVanity,
+            messageFake: PublicConfig.default.leave.messageFake
         }
 
     }

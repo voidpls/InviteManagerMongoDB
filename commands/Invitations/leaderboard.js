@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
 
     message.channel.send(new Discord.MessageEmbed()
         .setColor('RANDOM')
-        .setTitle('Leaderboard')
+        .setTitle('Leaderboard - ' + message.guild.name)
         .setDescription(`Classement du serveur ${message.member.guild.name}
         
 :white_check_mark: Invitations réelles

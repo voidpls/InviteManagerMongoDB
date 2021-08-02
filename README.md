@@ -37,7 +37,7 @@ A real wiki will accompany the project to facilitate its deployment.
 - [ ] ranks
 
 ### Utils commands
-- [ ] ping
+- [x] ping
 - [ ] help
 
 ### Events

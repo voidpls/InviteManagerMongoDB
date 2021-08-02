@@ -33,15 +33,26 @@ module.exports = async (client, member) => {
             leaveChannel.send(toSend).catch(err => console.log(err))
         } else {
             let inviter = await member.guild.member(userData._id)
-            let toSend = await guildData.leave.messageCorrect
-                .replace(/\{member:username\}/g, member.user.username)
-                .replace(/\{member:mention\}/g, member.toString())
-                .replace(/\{member:tag\}/g, member.user.tag)
-                .replace(/\{inviter:username\}/g, inviter.user.username)
-                .replace(/\{inviter:mention\}/g, inviter.toString())
-                .replace(/\{inviter:tag\}/g, inviter.user.tag)
-                .replace(/\{invites\}/g, userData.invites - 1)
-            leaveChannel.send(toSend).catch(err => console.log(err))
+            if ((Date.now() - member.user.createdTimestamp) < guildData.fake * 24 * 60 * 60 * 1000) {
+                let toSend = await guildData.leave.messageFake
+                    .replace(/\{member:username\}/g, member.user.username)
+                    .replace(/\{member:mention\}/g, member.toString())
+                    .replace(/\{member:tag\}/g, member.user.tag)
+                    .replace(/\{inviter:username\}/g, inviter.user.username)
+                    .replace(/\{inviter:mention\}/g, inviter.toString())
+                    .replace(/\{inviter:tag\}/g, inviter.user.tag)
+                leaveChannel.send(toSend).catch(err => console.log(err))
+            } else {
+                let toSend = await guildData.leave.messageCorrect
+                    .replace(/\{member:username\}/g, member.user.username)
+                    .replace(/\{member:mention\}/g, member.toString())
+                    .replace(/\{member:tag\}/g, member.user.tag)
+                    .replace(/\{inviter:username\}/g, inviter.user.username)
+                    .replace(/\{inviter:mention\}/g, inviter.toString())
+                    .replace(/\{inviter:tag\}/g, inviter.user.tag)
+                    .replace(/\{invites\}/g, userData.invites - 1)
+                leaveChannel.send(toSend).catch(err => console.log(err))
+            }
         }
     }
 
@@ -51,10 +62,16 @@ module.exports = async (client, member) => {
     if (userData._id === "VANITY") {
         userData.invites--
         userData.invites_left++
-        return await userData.save()
+        return userData.save()
+    }
+
+    if ((Date.now() - member.user.createdTimestamp) < guildData.fake * 24 * 60 * 60 * 1000) {
+        userData.invites_fake--
+        userData.invites_left++
+        return userData.save()
     }
 
     userData.invites--
     userData.invites_left++
-    return await userData.save()
+    return userData.save()
 }
