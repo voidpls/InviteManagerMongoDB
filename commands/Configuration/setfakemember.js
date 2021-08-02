@@ -11,5 +11,5 @@ module.exports.run = async (client, message, args) => {
         return message.channel.send(`:white_check_mark: **|** La durée de création de compte pour définir si un membre est fake sur **${message.member.guild.name}** est maintenant de \`${args[0]}\` jours !`)
     }
 
-    return message.channel.send(`:white_check_mark: **|** La durée de création de compte pour définir si un membre est fake sur **${message.member.guild.name}** est \`${guildData.prefix}\` !`)
+    return message.channel.send(`:white_check_mark: **|** La durée de création de compte pour définir si un membre est fake sur **${message.member.guild.name}** est \`${guildData.fake}\` jours !`)
 }
