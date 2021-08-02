@@ -26,7 +26,7 @@ A real wiki will accompany the project to facilitate its deployment.
 ### Configuration commands
 - [x] setprefix
 - [x] setchannels
-- [ ] setfakemember
+- [x] setfakemember
 - [ ] setmessage
 - [ ] setranks
 
