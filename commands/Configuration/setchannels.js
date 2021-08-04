@@ -16,12 +16,12 @@ module.exports.run = async (client, message, args) => {
                     guildData.join.channel = joinChannel.id
                     guildData.markModified('join') // I lost 2 hours for this fucking line 
                     guildData.save()
-                    return message.channel.send(`:white_check_mark: **|** Le nouveau salon pour les messages de arrivées est maintenant **${args[2]}** ! N'oubliez pas d'activer les messages d'arrivées.`)
+                    return message.channel.send(`:white_check_mark: **|** Le nouveau salon pour les messages de arrivées est maintenant **${args[2]}** ! N'oubliez pas d'activer les messages d'arrivées.\n__Exemple__: \`${guildData.prefix}setchannels join enable\``)
                 case ("enable"):
                     guildData.join.enabled = true
                     guildData.markModified('join')
                     guildData.save()
-                    return message.channel.send(`:white_check_mark: **|** Les messages d'arrivées sont maintenant **activés** ! N'oubliez pas de définir un salon.`)
+                    return message.channel.send(`:white_check_mark: **|** Les messages d'arrivées sont maintenant **activés** ! N'oubliez pas de définir un salon.\n__Exemple__: \`${guildData.prefix}setchannels join set \`<#${message.channel.id}>`)
                 case ("disable"):
                     guildData.join.enabled = false
                     guildData.markModified('join')
@@ -39,12 +39,12 @@ module.exports.run = async (client, message, args) => {
                     guildData.leave.channel = leaveChannel.id
                     guildData.markModified('leave')
                     guildData.save()
-                    return message.channel.send(`:white_check_mark: **|** Le nouveau salon pour les messages de départs est maintenant **${args[2]}** ! N'oubliez pas d'activer les messages de départs.`)
+                    return message.channel.send(`:white_check_mark: **|** Le nouveau salon pour les messages de départs est maintenant **${args[2]}** ! N'oubliez pas d'activer les messages de départs.\n__Exemple__: \`${guildData.prefix}setchannels leave enable\``)
                 case ("enable"):
                     guildData.leave.enabled = true
                     guildData.markModified('leave')
                     guildData.save()
-                    return message.channel.send(`:white_check_mark: **|** Les messages de départs sont maintenant **activés** ! N'oubliez pas de définir un salon.`)
+                    return message.channel.send(`:white_check_mark: **|** Les messages de départs sont maintenant **activés** ! N'oubliez pas de définir un salon.\n__Exemple__: \`${guildData.prefix}setchannels leave set \`<#${message.channel.id}>`)
                 case ("disable"):
                     guildData.leave.enabled = false
                     guildData.markModified('leave')
