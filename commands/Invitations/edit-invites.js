@@ -15,7 +15,6 @@ module.exports.run = async (client, message, args) => {
 
     userData.invites = userData.invites + parseFloat(args[1])
     userData.invites_bonus = userData.invites_bonus + parseFloat(args[1])
-    console.log(userData.invites)
     userData.save()
 
     return message.channel.send(`:white_check_mark: **|** Les invitations de <@${user.id}> sont passés de **${userData.invites}** (**${userData.invites_bonus}** bonus) à **${userData.invites + parseFloat(args[1])}** (**${userData.invites_bonus + parseFloat(args[1])}** bonus) ! `)
