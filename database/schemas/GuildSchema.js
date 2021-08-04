@@ -38,6 +38,9 @@ const GuildSchema = mongoose.Schema({
             messageFake: PublicConfig.default.leave.messageFake
         }
 
+    },
+    ranks : {
+        type: Object,
     }
 })
 
