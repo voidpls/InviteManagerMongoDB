@@ -27,8 +27,8 @@ A real wiki will accompany the project to facilitate its deployment.
 - [x] setprefix
 - [x] setchannels
 - [x] setfakemember
+- [x] setranks
 - [ ] setmessage
-- [ ] setranks
 
 ### Invitations commands
 - [x] invites
