@@ -33,7 +33,7 @@ A real wiki will accompany the project to facilitate its deployment.
 ### Invitations commands
 - [x] invites
 - [x] leaderboard
-- [ ] invites-edit
+- [x] edit-invites
 - [ ] ranks
 
 ### Utils commands

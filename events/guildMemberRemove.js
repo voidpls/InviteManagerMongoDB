@@ -2,10 +2,8 @@ module.exports = async (client, member) => {
     let guildData = await client.data.getGuildDB(member.guild.id)
     let userData = await client.data.getUserDB(member.id, member.guild.id)
 
-    if (userData && userData.inviterID) {
-        userData.deleteOne()
-        userData = await client.data.getUserDB(userData.inviterID, member.guild.id)
-    }
+    if (userData && userData.inviterID) userData.deleteOne()
+    userData = await client.data.getUserDB(userData.inviterID, member.guild.id)
 
     if ((guildData.leave.enabled === true) && !(guildData.leave.channel === null)) {
         let leaveChannel = await client.channels.fetch(guildData.leave.channel)
