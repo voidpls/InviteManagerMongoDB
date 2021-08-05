@@ -4,8 +4,6 @@ module.exports.run = async (client, message, args) => {
     if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":x: **|** Vous n'avez pas la permission !")
     let guildData = await client.data.getGuildDB(message.member.guild.id)
 
-    //if (!args[0]) return message.channel.send(`:x: **|** Vous devez ajouter `)
-
     switch (args[0]) {
         case ("add"):
             const roles = message.member.guild.roles.cache.filter(role => role.name !== '@everyone' && !role.managed && message.member.guild.me.roles.highest.comparePositionTo(role) > 0)
@@ -18,10 +16,11 @@ module.exports.run = async (client, message, args) => {
             if (!guildData.ranks) guildData.ranks = {}
             if (guildData.ranks[args[2]]) return message.channel.send(`:x: **|** Il y a déjà un rank avec **${args[2]} invitations**, il s'agit de <@&${await guildData.ranks[args[2]]}> !`)
 
-            guildData.ranks[args[2]] = args[1].slice(3, -1);
+            guildData.ranks[args[2]] = args[1].slice(3, -1)
+            guildData.markModified('ranks')
             guildData.save()
 
-            return message.channel.send(`:white_check_mark: **|** Le rank pour le rôle ${args[1]} avec **${args[2]}** a été ajouté !`)
+            return message.channel.send(`:white_check_mark: **|** Le rank pour le rôle ${args[1]} avec **${args[2]} invitation(s)** a été ajouté !`)
         case ("remove"):
             if (!args[1]) return message.channel.send(`:x: **|** Vous devez indiquer le nombre d'invitations du rank que vous voulez supprimer !\n__Exemple__: \`${guildData.prefix}setranks remove 5\``)
             if (isNaN(args[1])) return message.channel.send(`:x: **|** Le nombre d'invitations du rank que vous voulez supprimer doit être un nombre valide !\n__Exemple__: \`${guildData.prefix}setranks add \`<@&${roles.random().id}>\` 5\``)
@@ -33,7 +32,7 @@ module.exports.run = async (client, message, args) => {
 
             return message.channel.send(`:white_check_mark: **|** Le rank avec **${args[1]} invitations** a été supprimé !`)
         default:
-            let ranksString = "__Liste des ranks :__"
+            let ranksString = "__Liste des rôles disponibles :__"
 
             for (const [nbInv, roleInv] of Object.entries(guildData.ranks)) {
                 ranksString = ranksString + `\n<@&${roleInv}> : **${nbInv} invitations**`
