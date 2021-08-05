@@ -34,7 +34,7 @@ A real wiki will accompany the project to facilitate its deployment.
 - [x] invites
 - [x] leaderboard
 - [x] edit-invites
-- [ ] ranks
+- [x] ranks
 
 ### Utils commands
 - [x] ping
