@@ -73,7 +73,22 @@ module.exports = async (client, member) => {
         userData.invites_fake++
         return userData.save()
     }
+
     userData.invites++
     userData.invites_join++
-    return userData.save()
+    userData.save()
+
+    if (guildData.ranks) {
+        for (const [nbInv, roleID] of Object.entries(guildData.ranks)) {
+            if (userData.invites >= nbInv) {
+                let inviterMember = member.guild.member(usedInvite.inviter.id)
+                if (!inviterMember.roles.cache.find(r => r.id === roleID)) {
+                    inviterMember.roles.add(member.guild.roles.cache.find(r => r.id === roleID))
+                }
+            }
+            
+        }
+    }
+
+    return
 }

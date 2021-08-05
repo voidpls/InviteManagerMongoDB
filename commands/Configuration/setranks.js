@@ -31,6 +31,20 @@ module.exports.run = async (client, message, args) => {
             guildData.save()
 
             return message.channel.send(`:white_check_mark: **|** Le rank avec **${args[1]} invitations** a été supprimé !`)
+        case ("autoremove"):
+            switch (args[1]) {
+                case ("on"):
+                    guildData.autoremoverank = true
+                    guildData.save()
+                    return message.channel.send(`:white_check_mark: **|** L'autoremove pour les ranks sur **${message.guild.name}** est **activé** !\nVous pouvez à tout moment le désactiver avec \`${guildData.prefix}setranks autoremove off\` !`)
+                case ("off"):
+                    guildData.autoremoverank = false
+                    guildData.save()
+                    return message.channel.send(`:white_check_mark: **|** L'autoremove pour les ranks sur **${message.guild.name}** est maintenant **désactivé** !\nous pouvez à tout moment le réactiver avec \`${guildData.prefix}setranks autoremove on\` !`)
+                default:
+                    if (guildData.autoremoverank === true) return message.channel.send(`:white_check_mark: **|** L'autoremove pour les ranks sur **${message.guild.name}** est **activé** !\nVous pouvez à tout moment le désactiver avec \`${guildData.prefix}setranks autoremove off\` !`)
+                    return message.channel.send(`:white_check_mark: **|** L'autoremove pour les ranks sur **${message.guild.name}** est **désactivé** !\nVous pouvez à tout moment l'activer avec \`${guildData.prefix}setranks autoremove on\` !`)
+            }
         default:
             let ranksString = "__Liste des rôles disponibles :__"
 
@@ -49,7 +63,8 @@ module.exports.run = async (client, message, args) => {
 
 *Exemple de commandes :*
 ● \`${guildData.prefix}setranks add @Premium 8\` pour ajouter le rank avec comme rôle **@Premium** pour **5 invitations**.
-● \`${guildData.prefix}setranks remove 5\` pour supprimer le rank avec **5 invitations**.`)
+● \`${guildData.prefix}setranks remove 5\` pour supprimer le rank avec **5 invitations**.
+● \`${guildData.prefix}setranks autoremove off\` pour désactiver l'autoremove des ranks.`)
             )
     }
 }

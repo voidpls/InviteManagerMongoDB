@@ -71,5 +71,21 @@ module.exports = async (client, member) => {
 
     userData.invites--
     userData.invites_left++
-    return userData.save()
+    await userData.save()
+
+    if (guildData.ranks) {
+        if (guildData.autoremoverank === true) {
+            for (const [nbInv, roleID] of Object.entries(guildData.ranks)) {
+                if (userData.invites <= nbInv) {
+                    let inviterMember = member.guild.member(userData._id)
+                    if (inviterMember.roles.cache.find(r => r.id === roleID)) {
+                        inviterMember.roles.remove(member.guild.roles.cache.find(r => r.id === roleID))
+                    }
+                }
+
+            }
+        }
+    }
+    
+    return
 }

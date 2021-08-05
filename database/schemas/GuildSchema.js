@@ -14,6 +14,10 @@ const GuildSchema = mongoose.Schema({
         type: Number,
         default: PublicConfig.default.fake
     },
+    autoremoverank: {
+        type: Boolean,
+        default: true
+    },
     join: {
         type: Object,
         default: {
