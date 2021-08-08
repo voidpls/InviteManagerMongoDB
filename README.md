@@ -33,7 +33,7 @@ Feel free to add a star ⭐ to the repository to promote the project !
 
 More features are coming very soon, feel free to make suggestions / corrections.
 
-** Important: ** The robot parameters defined directly on Discord are unique for each server. This facilitates the management of multi-servers. 
+**Important:** The robot parameters defined directly on Discord are unique for each server. This facilitates the management of multi-servers. 
 
 ## Commands List
 
@@ -63,7 +63,7 @@ Only the available commands are listed, the current features are in the Todo lis
 | --- | --- |
 | `ping` | See robot latency. |
 
-**More documentation is coming very soon. **
+**More documentation is coming very soon.**
 
 ## To do list
 ### Configuration commands
