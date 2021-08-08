@@ -19,7 +19,9 @@
 InviteManagerMongoDB is a Discord robot made in Javascript with [Discord.js (v12.5)](https://discord.js.org) and [Mongoose](https://mongoosejs.com/) by FrancisLaTruelle.
 Feel free to add a star ⭐ to the repository to promote the project !
 
-## Features (non-exhaustive list)
+## Features
+
+### Non-exhaustive list:
 
 *   Automatic invitation counting
 *   Addition (or removal) of role based on user invitations 
