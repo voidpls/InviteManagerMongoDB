@@ -65,7 +65,7 @@ Only the available commands are listed, the current features are in the Todo lis
 | --- | --- |
 | `ping` | See robot latency. |
 
-**More documentation is coming very soon.**
+# More documentation is coming very soon.
 
 ## To do list
 ### Configuration commands
