@@ -31,7 +31,7 @@ Feel free to add a star ⭐ to the repository to promote the project !
 
 [See the full commands list](https://github.com/FrancisLaTruelle/InviteManagerMongoDB#commands-list)
 
-More features are coming very soon, feel free to make suggestions / corrections.
+*More features are coming very soon, feel free to make suggestions / corrections.*
 
 **Important:** The robot parameters defined directly on Discord are unique for each server. This facilitates the management of multi-servers. 
 
