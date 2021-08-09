@@ -1,0 +1,19 @@
+{
+  "name": "invitemanagermongodb",
+  "version": "1.0.0",
+  "main": "main.js",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "mongoose": "^5.12.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrancisLaTruelle/InviteManagerMongoDB.git"
+  },
+  "author": "FrancisLaTruelle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrancisLaTruelle/InviteManagerMongoDB/issues"
+  },
+  "homepage": "https://github.com/FrancisLaTruelle/InviteManagerMongoDB#readme"
+}

@@ -37,6 +37,35 @@ Feel free to add a star ⭐ to the repository to promote the project !
 
 **Important:** The robot parameters defined directly on Discord are unique for each server. This facilitates the management of multi-servers. 
 
+## Installation 
+
+### Requirements
+
+*   [Node.js](https://nodejs.org/) (v14 recommended)
+*   [MongoDB](https://www.mongodb.com/try/download/community)
+
+This is mandatory for everything to work properly. You absolutely must have them in addition to the repository. 
+
+### Configuration
+
+The configuration of the internal robot is divided into 2 parts, it is your `PublicConfig.json` and `PrivateConfig.json`. As their name suggests, one contains visual information only and the other contains private information such as your Discord bot token or your mongoDB url. Changing `PrivateConfig.json` will be required to start the bot. 
+
+**Example of `PrivateConfig.json`:**
+```
+{
+    "token" : "XXXXXXXX",   <- Your private Discord bot token
+    "mongoDB" : "mongodb+srv://XXXXXXXX:XXXXXXXX@XXXXXXXX/invitemanager"   <- Your private MongoURL
+}
+```
+
+### Launch the bot
+
+**Remember to be in the main folder to write these commands in your command prompt.**
+
+1. Run `npm i` to install all dependencies of package.json
+2. Run `node main.js` *or* `pm2 start main.js`
+3. Enjoy it !
+
 ## Commands List
 
 The default prefix is `/`, you can easily change it directly on Discord, it must be present before any command. 
@@ -64,8 +93,6 @@ Only the available commands are listed, the current features are in the Todo lis
 | Command | Description |
 | --- | --- |
 | `ping` | See robot latency. |
-
-# More documentation is coming very soon.
 
 ## To do list
 ### Configuration commands
