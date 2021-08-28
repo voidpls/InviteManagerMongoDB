@@ -60,9 +60,10 @@ The configuration of the internal robot is divided into 2 parts, it is your `Pub
 
 ### Launch the bot
 
-**Remember to be in the main folder to write these commands in your command prompt.**
+Don't forget to configure your `PrivateConfig.json` first. 
+*Remember to be in the main folder to write these commands in your command prompt.*
 
-1. Run `npm i` to install all dependencies of package.json
+1. Run `npm i` to install all dependencies of `package.json`
 2. Run `node main.js` *or* `pm2 start main.js`
 3. Enjoy it !
 

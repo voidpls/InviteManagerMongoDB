@@ -11,12 +11,12 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp()
             .setThumbnail(message.member.user.displayAvatarURL())
             .setFooter(`Demandé par ${message.member.user.tag}`)
-            .setDescription(`:infinity: **${userData.invites_join}** invités
-:x: **${userData.invites_left}** partis
-:poop: **${userData.invites_invalid}** invalidées
-:sparkles: **${userData.invites_bonus}** bonus
+            .setDescription(`:infinity: **${!userData ? 0 : userData.invites_join}** invités
+:x: **${!userData? 0 : userData.invites_left}** partis
+:poop: **${!userData ? 0 : userData.invites_invalid}** invalidées
+:sparkles: **${!userData ? 0 : userData.invites_bonus}** bonus
 
-:white_check_mark: Vous avez actuellement **${userData.invites}** invitations ! :clap:`)
+:white_check_mark: Vous avez actuellement **${!userData ? 0 : userData.invites}** invitations ! :clap:`)
         )
     }
 
@@ -29,12 +29,12 @@ module.exports.run = async (client, message, args) => {
         .setTimestamp()
         .setThumbnail(userTargeted.displayAvatarURL())
         .setFooter(`Demandé par ${message.member.user.tag}`)
-        .setDescription(`:infinity: **${userData.invites_join}** invités
-:x: **${userData.invites_left}** partis
-:poop: **${userData.invites_invalid}** invalidées
-:sparkles: **${userData.invites_bonus}** bonus
+        .setDescription(`:infinity: **${!userData ? 0 : userData.invites_join}** invités
+:x: **${!userData ? 0 : userData.invites_left}** partis
+:poop: **${!userData ? 0 :userData.invites_invalid}** invalidées
+:sparkles: **${!userData ? 0 : userData.invites_bonus}** bonus
 
-:white_check_mark: Vous avez actuellement **${userData.invites}** invitations ! :clap:`)
+:white_check_mark: Vous avez actuellement **${!userData ? 0 : userData.invites}** invitations ! :clap:`)
     )
 
 }
