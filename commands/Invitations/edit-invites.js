@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
     if (!(args[1].startsWith("+") || args[1].startsWith("-"))) return message.channel.send(`:x: **|** La valeur doit commencer par \`+\` ou \`-\` !\n__Exemple__: \`${guildData.prefix}edit-invites \`<@${message.author.id}>\` +10\``)
     if (isNaN(args[1].slice(1))) return message.channel.send(`:x: **|** Ce nombre est invalide !\n__Exemple__: \`${guildData.prefix}edit-invites \`<@${message.author.id}>\` +10\``)
 
-    let userData = await client.data.getUserDB(user.id, message.guild.id)
+    let userData = await client.data.getUserDB(user.id, message.guild.id, "unknown")
 
     userData.invites = userData.invites + parseFloat(args[1])
     userData.invites_bonus = userData.invites_bonus + parseFloat(args[1])
