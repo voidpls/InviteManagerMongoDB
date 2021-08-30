@@ -48,11 +48,13 @@ module.exports.run = async (client, message, args) => {
         default:
             let ranksString = "__Liste des rôles disponibles :__"
 
-            for (const [nbInv, roleInv] of Object.entries(guildData.ranks)) {
-                ranksString = ranksString + `\n<@&${roleInv}> : **${nbInv} invitations**`
+            if (guildData.ranks && Object.keys(guildData.ranks).length > 0) {
+                for (const [nbInv, roleInv] of Object.entries(guildData.ranks)) {
+                    ranksString = ranksString + `\n<@&${roleInv}> : **${nbInv} invitations**`
+                }
+            } else {
+                ranksString = ranksString + "\nAucun rank existant."
             }
-
-            if (ranksString.length <= 21) ranksString = ranksString + "\nAucun rank existant."
 
             return message.channel.send(new Discord.MessageEmbed()
                 .setTitle(`Ranks de ${message.member.guild.name}`)

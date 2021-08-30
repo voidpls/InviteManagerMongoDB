@@ -45,6 +45,7 @@ const GuildSchema = mongoose.Schema({
     },
     ranks : {
         type: Object,
+        default: {}
     }
 })
 
