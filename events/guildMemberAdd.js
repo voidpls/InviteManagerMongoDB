@@ -5,6 +5,7 @@ module.exports = async (client, member) => {
     const newInvites = await member.guild.fetchInvites()
 
     const usedInvite = newInvites.find(inv => cachedInvites.get(inv.code).uses < inv.uses)
+    if (usedInvite.inviter.id == member.id) return;
 
     if ((guildData.join.enabled === true) && !(guildData.join.channel === null)) {
         let joinChannel = await client.channels.fetch(guildData.join.channel)
@@ -82,6 +83,7 @@ module.exports = async (client, member) => {
         for (const [nbInv, roleID] of Object.entries(guildData.ranks)) {
             if (userData.invites >= nbInv) {
                 let inviterMember = member.guild.member(usedInvite.inviter.id)
+                if (!inviterMember) return;
                 if (!inviterMember.roles.cache.find(r => r.id === roleID)) {
                     inviterMember.roles.add(member.guild.roles.cache.find(r => r.id === roleID))
                 }
