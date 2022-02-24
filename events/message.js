@@ -1,25 +1,19 @@
-const Discord = require("discord.js")
+const Discord = require('discord.js')
 
-module.exports = async(client, message, user) => {
-    if (message.webhookID) return
+module.exports = async (client, message, user) => {
+  if (message.webhookID) return
 
-    if(message.channel.type === "dm") {
-        if(message.author.bot) {
-            return
-        }
-        return message.channel.send(":x: **|** Mes messages privés sont désactivés")
-    }
-    
-    let guildData = await client.data.getGuildDB(message.member.guild.id)
-    if(!message.content.startsWith(guildData.prefix)) return
+  if (message.channel.type !== 'text') return
 
-    const args = message.content.slice(guildData.prefix.length).trim().split(/ +/g)
-    const commande = args.shift()
+  const guildData = await client.data.getGuildDB(message.guild.id)
+  if (!message.content.startsWith(guildData.prefix)) return
 
-    const cmd = client.commands.get(commande)
+  const args = message.content.slice(guildData.prefix.length).trim().split(/ +/g)
+  const command = args.shift()
 
-    if(!cmd) return
+  const cmd = client.commands.get(command)
 
-    cmd.run(client, message, args)
+  if (!cmd) return
 
+  cmd.run(client, message, args)
 }

@@ -1,34 +1,25 @@
-const Discord = require("discord.js")
+const Discord = require('discord.js')
 
 module.exports.run = async (client, message, args) => {
+  const leaderboardData = await client.data.getLeaderboard(message.guild.id)
+  if (!leaderboardData || (leaderboardData === undefined)) return message.channel.send('**Error:** Failed to fetch leaderboard.')
 
-    let leaderboardData = await client.data.getLeaderboard(message.member.guild.id)
-    if (!leaderboardData || (leaderboardData === undefined)) return message.channel.send(`:x: **|** Impossible de charger le leaderboard sur ${message.member.guild.name}. Veuillez reessayer plus tard ...`)
+  const cleanLeaderboardData = leaderboardData.filter(user => {
+    return user._id !== 'unknown'
+  })
+  if (cleanLeaderboardData.length > 10) cleanLeaderboardData.length = 10
 
-    let usernameArray = []
-    for (const user of leaderboardData) {
-        usernameArray.push(await message.member.guild.member(user._id).user.tag)
-    }
+  const leaderboardArr = []
+  for (const [i, user] of cleanLeaderboardData.entries()) {
+    const member = await message.guild.members.fetch(user._id)
+    leaderboardArr.push(`${i + 1}. **${member.user.username}**#${member.user.discriminator} - ${leaderboardData[i].invites}`)
+  }
 
-    var counter = 0
-    let leaderboardArray = []
-    for (const username of usernameArray) {
-        leaderboardArray.push(`\n**${counter + 1} |** ${username} - :white_check_mark: ${leaderboardData[counter].invites} :infinity: ${leaderboardData[counter].invites_join} :sparkles: ${leaderboardData[counter].invites_bonus} :poop: ${leaderboardData[counter].invites_invalid} :x: ${leaderboardData[counter].invites_left}`)
-        counter++
-    }
-
-    message.channel.send(new Discord.MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle('Leaderboard de ' + message.guild.name)
-        .setDescription(`Classement du serveur ${message.member.guild.name}
-        
-:white_check_mark: Invitations réelles
-:infinity: Toutes invitations comprises
-:sparkles: Invitations bonus
-:poop: Fausses invitations (compte trop récent)
-:x: Invités partis
-${leaderboardArray}`)
-        .setTimestamp()
-        .setFooter(`Demandé par ${message.member.user.tag}`)
-    )
+  message.channel.send(new Discord.MessageEmbed()
+    .setColor('2f3136')
+    .setAuthor(`${message.guild.name} Invites`, message.guild.iconURL({ dynamic: true, size: 64 }))
+    .setDescription(leaderboardArr.join('\n'))
+    .setTimestamp()
+    .setFooter(client.user.username, client.user.displayAvatarURL({ dynamic: true, size: 64 }))
+  )
 }

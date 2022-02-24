@@ -1,24 +1,23 @@
 {
     "prefix": "!",
-    "enable_debug": true,
+    "enable_debug": false,
     "default": {
         "fake": 7,
         "join": {
             "enabled": false,
-            "messageCorrect": "{member:mention} vient de rejoindre. Il a été invité par **{inviter:username}** qui a désormais **{invites} invitations** !",
-            "messageUnknown": "{member:mention} vient de rejoindre. Impossible de savoir par qui il a été invité !",
-            "messageBot": "{member:mention} vient de rejoindre via l'OAuth flow !",
-            "messageVanity": "{member:mention} vient de rejoindre via le lien officiel ! (**{code}**)",
-            "messageFake": "{member:mention} vient de rejoindre mais son compte est trop récent. Il a été invité par **{inviter:username}** !"
+            "messageCorrect": "{member:mention} was invited by `{inviter:tag}`. Invite code used: `{code}`",
+            "messageUnknown": "{member:mention} joined using an unknown invite/integration",
+            "messageBot": "{member:mention} was added via OAuth Flow",
+            "messageVanity": "{member:mention} joined using the vanity code: `{code}`",
+            "messageFake": "{member:mention} was invited by `{inviter:tag}`, but no invite was added due to account age. Invite code used: `{code}`"
         },
         "leave": {
             "enabled": false,
-            "messageCorrect": "{member:mention} est parti. Il a été invité par **{inviter:username}** qui a désormais **{invites} invitations** !",
-            "messageUnknown": "{member:mention} est parti. Impossible de savoir par qui il a été invité !",
-            "messageBot": "{member:mention} est parti. Il a été invité via l'OAuth flow !",
-            "messageVanity": "{member:mention} est parti. Il a été invité via le lien officiel !",
-            "messageFake": "{member:mention} est parti, son compte est trop récent. Il a été invité par **{inviter:username}** !"
+            "messageCorrect": "`{member:tag}` left the server. They were invited by `{inviter:tag}`",
+            "messageUnknown": "`{member:tag}` left the server. They joined using an unknown invite/integration",
+            "messageBot": "`{member:tag}` left the server. They were added via OAuth Flow",
+            "messageVanity": "`{member:tag}` left the server. They joined using the vanity code.",
+            "messageFake": "`{member:tag}` left the server. They were invited by `{inviter:tag}`"
         }
-
     }
 }

@@ -1,40 +1,21 @@
-const Discord = require("discord.js")
+const Discord = require('discord.js')
 
 module.exports.run = async (client, message, args) => {
+  let user = message.author
+  if (args[0] && message.mentions.users.first()) user = message.mentions.users.first()
 
-    if (!args[0]) {
-        let userData = await client.data.getUserDB(message.member.id, message.member.guild.id)
+  const userData = await client.data.getUserDB(user.id, message.member.guild.id)
 
-        return message.channel.send(new Discord.MessageEmbed()
-            .setColor('RANDOM')
-            .setTitle("Invitations de " + message.member.user.tag)
-            .setTimestamp()
-            .setThumbnail(message.member.user.displayAvatarURL())
-            .setFooter(`Demandé par ${message.member.user.tag}`)
-            .setDescription(`:infinity: **${!userData ? 0 : userData.invites_join}** invités
-:x: **${!userData? 0 : userData.invites_left}** partis
-:poop: **${!userData ? 0 : userData.invites_invalid}** invalidées
-:sparkles: **${!userData ? 0 : userData.invites_bonus}** bonus
-
-:white_check_mark: Vous avez actuellement **${!userData ? 0 : userData.invites}** invitations ! :clap:`)
-        )
-    }
-
-    let userTargeted = message.mentions.users.first()
-    let userData = await client.data.getUserDB(userTargeted.id, message.member.guild.id)
-
-    return message.channel.send(new Discord.MessageEmbed()
-        .setColor('RANDOM')
-        .setTitle("Invitations de " + userTargeted.tag)
-        .setTimestamp()
-        .setThumbnail(userTargeted.displayAvatarURL())
-        .setFooter(`Demandé par ${message.member.user.tag}`)
-        .setDescription(`:infinity: **${!userData ? 0 : userData.invites_join}** invités
-:x: **${!userData ? 0 : userData.invites_left}** partis
-:poop: **${!userData ? 0 :userData.invites_invalid}** invalidées
-:sparkles: **${!userData ? 0 : userData.invites_bonus}** bonus
-
-:white_check_mark: Vous avez actuellement **${!userData ? 0 : userData.invites}** invitations ! :clap:`)
+  return message.channel.send(new Discord.MessageEmbed()
+    .setColor('2f3136')
+    .setTimestamp()
+  // .setAuthor(message.author.username, message.author.displayAvatarURL({dynamic: true, size: 64}))
+    .setFooter(client.user.username, client.user.displayAvatarURL({ dynamic: true, size: 64 }))
+    .setDescription(
+        `\`${user.tag}\` has **${!userData ? 0 : userData.invites}** invites.\n\n` +
+        `💠 **${!userData ? 0 : userData.invites_join}** total invites\n` +
+        `⛔ **${!userData ? 0 : userData.invites_left}** invited users left`
+        // `⭐ **${!userData ? 0 : userData.invites_bonus}** bonus`
     )
-
+  )
 }

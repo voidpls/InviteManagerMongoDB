@@ -15,5 +15,24 @@
   "bugs": {
     "url": "https://github.com/FrancisLaTruelle/InviteManagerMongoDB/issues"
   },
-  "homepage": "https://github.com/FrancisLaTruelle/InviteManagerMongoDB#readme"
+  "homepage": "https://github.com/FrancisLaTruelle/InviteManagerMongoDB#readme",
+  "eslintConfig": {
+    "extends": "standard",
+    "env": {
+      "commonjs": true,
+      "es2021": true,
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 12
+    },
+    "rules": {}
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0"
+  }
 }

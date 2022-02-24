@@ -1,8 +1,7 @@
-const GuildsDB = require("./schemas/GuildSchema")
-const UsersDB = require("./schemas/UserSchema")
+const GuildsDB = require('./schemas/GuildSchema')
+const UsersDB = require('./schemas/UserSchema')
 
 module.exports.getGuildDB = async function (guildID) {
-
   let guildDB = await GuildsDB.findOne({
     _id: guildID
   })
@@ -23,17 +22,16 @@ module.exports.getUserDB = async function (userID, guildID, inviterID = null) { 
   if (inviterID == null) {
     userDB = await UsersDB.findOne({
       _id: userID,
-      guildID: guildID,
+      guildID: guildID
     })
 
     if (userDB) {
       return userDB
     }
-    return
   } else {
     inviterDB = await UsersDB.findOne({
       _id: inviterID,
-      guildID: guildID,
+      guildID: guildID
     })
 
     if (!inviterDB) {
@@ -51,7 +49,7 @@ module.exports.getUserDB = async function (userID, guildID, inviterID = null) { 
 
     userDB = await UsersDB.findOne({
       _id: userID,
-      guildID: guildID,
+      guildID: guildID
     })
 
     if (userDB) {
