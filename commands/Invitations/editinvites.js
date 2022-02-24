@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 
   if (!user) return message.channel.send('Please mention a user')
   if (!args[1]) return message.channel.send('Please indicate amount of invites to add/remove: `+num/-num`')
-  if (!(args[1].startsWith('+') || args[1].startsWith('-'))) return message.channel.send('The amount of invites must start wotj `+` or `-`: `+num/-num`')
+  if (!(args[1].startsWith('+') || args[1].startsWith('-'))) return message.channel.send('The amount of invites must start with `+` or `-` [`+num/-num`]')
   if (!parseFloat(args[1].slice(1))) return message.channel.send('Invalid amount of invites to add/remove:  `+num/-num`')
 
   const userData = await client.data.getUserDB(user.id, message.guild.id, 'unknown')
